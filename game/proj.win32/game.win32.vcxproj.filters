@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{9d57a69d-1dfa-4716-97a4-2d50795623f4}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{2823eba9-76d4-42de-9cad-c35547df23cc}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{c581f412-573a-427a-b47c-696d3589ecff}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\game.ico">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseSelected.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\CloseNormal.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\HelloWorld.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\slash1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\slash2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\slash3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\slash4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed9.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed10.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed11.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed12.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed13.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed14.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed15.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed16.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bg_front_spacedust.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bg_galaxy.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bg_planetsunrise.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bg_spacialanomaly.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bg_spacialanomaly2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\clouds.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\land_green.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\land_grey.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\mountain_grey.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok8.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok5.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok6.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok7.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok9.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok10.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\ok11.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\sky_evening.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed0.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed5.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed6.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed7.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\speed8.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\start.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\title.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait5.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait6.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait7.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait8.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait9.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait10.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait11.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\wait12.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\yes1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\yes2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\yes3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\yes4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\yes5.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\yes6.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\deb.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\param.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\quitter.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\bg_param.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\parametre.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump5.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump6.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump7.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump8.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump9.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump10.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump11.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\jump12.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\black.png">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="CParallaxNodeExtras.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="MyClickableSprite.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="ParamScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="AppMacros.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="CParallaxNodeExtras.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="MyClickableSprite.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ParamScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\ProgHouse_13.mp3">
+      <Filter>resource</Filter>
+    </Media>
+  </ItemGroup>
+</Project>

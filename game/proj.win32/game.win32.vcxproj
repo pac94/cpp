@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1103435E-3DC1-498B-AB6B-5058B3A209DF}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)external;$(SolutionDir)CocosDenshion\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS_DEBUG;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;libBox2d.lib;libCocosDenshion.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <HeaderFileName>game.h</HeaderFileName>
+      <InterfaceIdentifierFileName>game_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>game_p.c</ProxyFileName>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)/game.tlb</TypeLibraryName>
+      <DllDataFileName />
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)external;$(SolutionDir)CocosDenshion\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ExceptionHandling />
+      <DebugInformationFormat />
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGSNDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;opengl32.lib;glew32.lib;libBox2d.lib;libCocosDenshion.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <HeaderFileName>game.h</HeaderFileName>
+      <InterfaceIdentifierFileName>game_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>game_p.c</ProxyFileName>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)/game.tlb</TypeLibraryName>
+      <DllDataFileName />
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\bg_front_spacedust.png" />
+    <Image Include="..\Resources\bg_galaxy.png" />
+    <Image Include="..\Resources\bg_param.png" />
+    <Image Include="..\Resources\bg_planetsunrise.png" />
+    <Image Include="..\Resources\bg_spacialanomaly.png" />
+    <Image Include="..\Resources\bg_spacialanomaly2.png" />
+    <Image Include="..\Resources\black.png" />
+    <Image Include="..\Resources\CloseNormal.png" />
+    <Image Include="..\Resources\CloseSelected.png" />
+    <Image Include="..\Resources\clouds.png" />
+    <Image Include="..\Resources\deb.png" />
+    <Image Include="..\Resources\HelloWorld.png" />
+    <Image Include="..\Resources\jump1.png" />
+    <Image Include="..\Resources\jump10.png" />
+    <Image Include="..\Resources\jump11.png" />
+    <Image Include="..\Resources\jump12.png" />
+    <Image Include="..\Resources\jump2.png" />
+    <Image Include="..\Resources\jump3.png" />
+    <Image Include="..\Resources\jump4.png" />
+    <Image Include="..\Resources\jump5.png" />
+    <Image Include="..\Resources\jump6.png" />
+    <Image Include="..\Resources\jump7.png" />
+    <Image Include="..\Resources\jump8.png" />
+    <Image Include="..\Resources\jump9.png" />
+    <Image Include="..\Resources\land_green.png" />
+    <Image Include="..\Resources\land_grey.png" />
+    <Image Include="..\Resources\mountain_grey.png" />
+    <Image Include="..\Resources\ok1.png" />
+    <Image Include="..\Resources\ok10.png" />
+    <Image Include="..\Resources\ok11.png" />
+    <Image Include="..\Resources\ok2.png" />
+    <Image Include="..\Resources\ok3.png" />
+    <Image Include="..\Resources\ok4.png" />
+    <Image Include="..\Resources\ok5.png" />
+    <Image Include="..\Resources\ok6.png" />
+    <Image Include="..\Resources\ok7.png" />
+    <Image Include="..\Resources\ok8.png" />
+    <Image Include="..\Resources\ok9.png" />
+    <Image Include="..\Resources\param.png" />
+    <Image Include="..\Resources\parametre.png" />
+    <Image Include="..\Resources\quitter.png" />
+    <Image Include="..\Resources\sky_evening.png" />
+    <Image Include="..\Resources\slash1.png" />
+    <Image Include="..\Resources\slash2.png" />
+    <Image Include="..\Resources\slash3.png" />
+    <Image Include="..\Resources\slash4.png" />
+    <Image Include="..\Resources\speed0.png" />
+    <Image Include="..\Resources\speed1.png" />
+    <Image Include="..\Resources\speed10.png" />
+    <Image Include="..\Resources\speed11.png" />
+    <Image Include="..\Resources\speed12.png" />
+    <Image Include="..\Resources\speed13.png" />
+    <Image Include="..\Resources\speed14.png" />
+    <Image Include="..\Resources\speed15.png" />
+    <Image Include="..\Resources\speed16.png" />
+    <Image Include="..\Resources\speed2.png" />
+    <Image Include="..\Resources\speed3.png" />
+    <Image Include="..\Resources\speed4.png" />
+    <Image Include="..\Resources\speed5.png" />
+    <Image Include="..\Resources\speed6.png" />
+    <Image Include="..\Resources\speed7.png" />
+    <Image Include="..\Resources\speed8.png" />
+    <Image Include="..\Resources\speed9.png" />
+    <Image Include="..\Resources\start.png" />
+    <Image Include="..\Resources\title.png" />
+    <Image Include="..\Resources\wait1.png" />
+    <Image Include="..\Resources\wait10.png" />
+    <Image Include="..\Resources\wait11.png" />
+    <Image Include="..\Resources\wait12.png" />
+    <Image Include="..\Resources\wait2.png" />
+    <Image Include="..\Resources\wait3.png" />
+    <Image Include="..\Resources\wait4.png" />
+    <Image Include="..\Resources\wait5.png" />
+    <Image Include="..\Resources\wait6.png" />
+    <Image Include="..\Resources\wait7.png" />
+    <Image Include="..\Resources\wait8.png" />
+    <Image Include="..\Resources\wait9.png" />
+    <Image Include="..\Resources\yes1.png" />
+    <Image Include="..\Resources\yes2.png" />
+    <Image Include="..\Resources\yes3.png" />
+    <Image Include="..\Resources\yes4.png" />
+    <Image Include="..\Resources\yes5.png" />
+    <Image Include="..\Resources\yes6.png" />
+    <Image Include="res\game.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="AppMacros.h" />
+    <ClInclude Include="CParallaxNodeExtras.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="MyClickableSprite.h" />
+    <ClInclude Include="ParamScene.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="CParallaxNodeExtras.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuScene.cpp" />
+    <ClCompile Include="MyClickableSprite.cpp" />
+    <ClCompile Include="ParamScene.cpp" />
+    <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\Resources\ProgHouse_13.mp3" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
