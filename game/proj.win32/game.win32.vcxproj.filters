@@ -267,6 +267,27 @@
     <Image Include="..\Resources\black.png">
       <Filter>resource</Filter>
     </Image>
+    <Image Include="C:\Users\Pierre-André\Documents\ring1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="C:\Users\Pierre-André\Documents\ring2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="C:\Users\Pierre-André\Documents\ring3.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="C:\Users\Pierre-André\Documents\ring4.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\obs1.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\obs2.png">
+      <Filter>resource</Filter>
+    </Image>
+    <Image Include="..\Resources\terre.png">
+      <Filter>resource</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
@@ -307,12 +328,18 @@
     <ClInclude Include="GameScene.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="coin.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="obstacle.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
@@ -336,10 +363,26 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="coin.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="obstacle.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\Resources\ProgHouse_13.mp3">
       <Filter>resource</Filter>
     </Media>
+    <Media Include="..\Resources\Sonic_Ring_Sound_Effect.mp3">
+      <Filter>resource</Filter>
+    </Media>
+    <Media Include="..\Resources\New_Super_Mario_Bros_Death_Sound_Effect.mp3" />
   </ItemGroup>
 </Project>

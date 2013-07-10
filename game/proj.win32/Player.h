@@ -11,7 +11,6 @@ public:
 	bool inAction;
 	CCSprite* sprite;
 	CCSize size;
-	CCAnimation* currentAnimation;
 	Player(void);
 	~Player(void);
 	void jumpAction();

@@ -145,6 +145,8 @@
     <Image Include="..\Resources\land_green.png" />
     <Image Include="..\Resources\land_grey.png" />
     <Image Include="..\Resources\mountain_grey.png" />
+    <Image Include="..\Resources\obs1.png" />
+    <Image Include="..\Resources\obs2.png" />
     <Image Include="..\Resources\ok1.png" />
     <Image Include="..\Resources\ok10.png" />
     <Image Include="..\Resources\ok11.png" />
@@ -182,6 +184,7 @@
     <Image Include="..\Resources\speed8.png" />
     <Image Include="..\Resources\speed9.png" />
     <Image Include="..\Resources\start.png" />
+    <Image Include="..\Resources\terre.png" />
     <Image Include="..\Resources\title.png" />
     <Image Include="..\Resources\wait1.png" />
     <Image Include="..\Resources\wait10.png" />
@@ -201,6 +204,10 @@
     <Image Include="..\Resources\yes4.png" />
     <Image Include="..\Resources\yes5.png" />
     <Image Include="..\Resources\yes6.png" />
+    <Image Include="C:\Users\Pierre-André\Documents\ring1.png" />
+    <Image Include="C:\Users\Pierre-André\Documents\ring2.png" />
+    <Image Include="C:\Users\Pierre-André\Documents\ring3.png" />
+    <Image Include="C:\Users\Pierre-André\Documents\ring4.png" />
     <Image Include="res\game.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -210,11 +217,14 @@
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="AppMacros.h" />
+    <ClInclude Include="coin.h" />
     <ClInclude Include="CParallaxNodeExtras.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="MyClickableSprite.h" />
+    <ClInclude Include="obstacle.h" />
     <ClInclude Include="ParamScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
@@ -222,16 +232,21 @@
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="coin.cpp" />
     <ClCompile Include="CParallaxNodeExtras.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="MyClickableSprite.cpp" />
+    <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="ParamScene.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="..\Resources\New_Super_Mario_Bros_Death_Sound_Effect.mp3" />
     <Media Include="..\Resources\ProgHouse_13.mp3" />
+    <Media Include="..\Resources\Sonic_Ring_Sound_Effect.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,271 +1,314 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "AppMacros.h"
-#include "Player.h"
-
+#include "GameOverScene.h"
 USING_NS_CC;
 
 
 CCScene* Game::scene()
 {
-    // 'scene' is an autorelease object
-    CCScene *scene = CCScene::create();
-    
-    // 'layer' is an autorelease object
-    Game *layer = Game::create();
 
-    // add layer as a child to scene
-    scene->addChild(layer);
+	CCScene *scene = CCScene::create();
+
+
+	Game *layer = Game::create();
+
+
+	scene->addChild(layer);
 	layer->setTouchEnabled(TRUE);
-    // return the scene
-    return scene;
+
+	return scene;
 }
 
-// on "init" you need to initialize your instance
+
 bool Game::init()
 {
-    //////////////////////////////
-    // 1. super init first
-    if ( !CCLayer::init() )
-    {
-        return false;
-    }
-    
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
+	if ( !CCLayer::init() )
+	{
+		return false;
+	}
 
-    // add a "close" icon to exit the progress. it's an autorelease object
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseSelected.png",
-                                        this,
-                                        menu_selector(Game::menuCloseCallback));
-    
+	visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	truc = 0;
+	time = 0;
+	obsDelay = 0;
+	ringDelay = 0;
+	randobs = 0;
+	rings = new CCArray;
+	obstacles = new CCArray;
+
+	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
+		"CloseNormal.png",
+		"CloseSelected.png",
+		this,
+		menu_selector(Game::menuCloseCallback));
+
 	pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
-                                origin.y + pCloseItem->getContentSize().height/2));
+		origin.y + pCloseItem->getContentSize().height/2));
 
-    // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
-    pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
+	CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+	pMenu->setPosition(CCPointZero);
+	this->addChild(pMenu, 1);
 
-    // add a label shows "Hello World"
-    // create and initialize a label
-    CCSprite* toto = CCSprite::create("sky_evening.png");
+
+	label = CCLabelTTF::create("", "Arial bold", 24);
+	label->setColor(ccc3(0,0,0));
+	this->addChild(label, 0);
+	label->setPosition( ccp(visibleSize.width/8, visibleSize.height-20) );
+
+	CCSprite* toto = CCSprite::create("sky_evening.png");
 	toto->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 	this->addChild(toto,-2);
-    // add "Game" splash screen"
-  
-	 CCSize size = CCDirector::sharedDirector()->getWinSize();
-    // add the sprite as a child to this layer
-    
-	player = CCSprite::create("yes6.png");
-		
-		player->setPosition(ccp(size.width/7 - 10, size.height/4 + 10));
-		this->addChild(player, 0);
+
+	CCSprite* toto1 = CCSprite::create("terre.png");
+	toto1->setPosition(ccp(0, 20));
+	this->addChild(toto1,-2);
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
+
+	sonic = new Player();
+	sonic->introAction();
+	this->addChild(sonic->sprite,0);
+	_backgroundNode = CCParallaxNodeExtras::node(); 
+	this->addChild(_backgroundNode,-1) ;
 
 
+	_spacedust1 = CCSprite::create("clouds.png");
+	_spacedust2 = CCSprite::create("clouds.png");
+	_planetsunrise = CCSprite::create("land_green.png");
+	_galaxy = CCSprite::create("land_green.png");
+	_galaxy2 = CCSprite::create("land_green.png");
+	_spacialanomaly = CCSprite::create("sky_evening.png");
+	_spacialanomaly2 = CCSprite::create("sky_evening.png"); 
+	_spacialanomaly3 = CCSprite::create("sky_evening.png"); 
 
-		CCAnimation* animation = CCAnimation::create();
-		animation->setDelayPerUnit(0.09f);
-		animation->setRestoreOriginalFrame(true);
-		
-		animation->addSpriteFrameWithFileName("yes1.png");
-		animation->addSpriteFrameWithFileName("yes2.png");
-		animation->addSpriteFrameWithFileName("yes3.png");
-		animation->addSpriteFrameWithFileName("yes4.png");
-		animation->addSpriteFrameWithFileName("yes5.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("yes6.png");
-		animation->addSpriteFrameWithFileName("wait7.png");
-		animation->addSpriteFrameWithFileName("wait8.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait12.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait8.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait12.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait8.png");
-		animation->addSpriteFrameWithFileName("wait7.png");
-		animation->addSpriteFrameWithFileName("wait6.png");
-		animation->addSpriteFrameWithFileName("wait5.png");
-		animation->addSpriteFrameWithFileName("wait4.png");
-		animation->addSpriteFrameWithFileName("wait3.png");
-		animation->addSpriteFrameWithFileName("wait2.png");
-		animation->addSpriteFrameWithFileName("wait1.png");
-		animation->addSpriteFrameWithFileName("wait2.png");
-		animation->addSpriteFrameWithFileName("wait3.png");
-		animation->addSpriteFrameWithFileName("wait4.png");
-		animation->addSpriteFrameWithFileName("wait5.png");
-		animation->addSpriteFrameWithFileName("wait4.png");
-		animation->addSpriteFrameWithFileName("wait3.png");
-		animation->addSpriteFrameWithFileName("wait2.png");
-		animation->addSpriteFrameWithFileName("wait1.png");
-		animation->addSpriteFrameWithFileName("wait2.png");
-		animation->addSpriteFrameWithFileName("wait3.png");
-		animation->addSpriteFrameWithFileName("wait4.png");
-		animation->addSpriteFrameWithFileName("wait5.png");
-		animation->addSpriteFrameWithFileName("wait6.png");
-		animation->addSpriteFrameWithFileName("wait7.png");
-		animation->addSpriteFrameWithFileName("wait8.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait12.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait8.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait12.png");
-		animation->addSpriteFrameWithFileName("wait11.png");
-		animation->addSpriteFrameWithFileName("wait10.png");
-		animation->addSpriteFrameWithFileName("wait9.png");
-		animation->addSpriteFrameWithFileName("wait8.png");
-		animation->addSpriteFrameWithFileName("wait7.png");
-		animation->addSpriteFrameWithFileName("wait6.png");
-		animation->addSpriteFrameWithFileName("wait5.png");
-		animation->addSpriteFrameWithFileName("wait4.png");
-		animation->addSpriteFrameWithFileName("wait3.png");
-		animation->addSpriteFrameWithFileName("wait2.png");
-		animation->addSpriteFrameWithFileName("wait1.png");
-		animation->addSpriteFrameWithFileName("wait2.png");
-		animation->addSpriteFrameWithFileName("wait3.png");
-		animation->addSpriteFrameWithFileName("wait4.png");
-		animation->addSpriteFrameWithFileName("wait5.png");
-		animation->addSpriteFrameWithFileName("wait4.png");
-		animation->addSpriteFrameWithFileName("wait3.png");
-		animation->addSpriteFrameWithFileName("wait2.png");
-		
-		CCAnimate* animate = CCAnimate::create(animation);
-		//CCRepeatForever* repeat = CCRepeatForever::create(animate);
-		animate->setTag(333);
-		player->runAction(animate);
+
+	CCPoint dustSpeed = ccp(0.005, 0.005);
+	CCPoint bgSpeed = ccp(0.2, 0.2);
+
+	_backgroundNode->addChild(_spacedust1, 0 , dustSpeed , ccp(0,size.height * 0.70) ); 
+	_backgroundNode->addChild(_spacedust2, 0 , dustSpeed , ccp( _spacedust1->getContentSize().width,size.height * 0.70)); 
+	_backgroundNode->addChild(_galaxy,-1, bgSpeed , ccp(0,size.height * 0.2));
+	_backgroundNode->addChild(_planetsunrise,-1 , bgSpeed,ccp(_galaxy->getContentSize().width,size.height * 0.2));  
+	_backgroundNode->addChild(_galaxy2,-1 , bgSpeed,ccp(_galaxy->getContentSize().width * 2,size.height * 0.2));   
+	_backgroundNode->addChild(_spacialanomaly,-2, bgSpeed,ccp(0,size.height * 0.5));      
+	_backgroundNode->addChild(_spacialanomaly2,-2, bgSpeed,ccp(_spacialanomaly->getContentSize().width,size.height /2));
+	_backgroundNode->addChild(_spacialanomaly3,-2, bgSpeed,ccp(_spacialanomaly->getContentSize().width * 2,size.height /2));
 	i = y= inAction = 0;
-		this->scheduleUpdate();
+	this->scheduleUpdate();
 	Mytest = 0;
 
-    return true;
+	return true;
 }
 
 void Game::update(float dt) {
 	i++;
+	time = time + dt;
+	ringDelay = ringDelay +dt;
+	obsDelay = obsDelay + dt;
+	if(ringDelay > 0.4)
+	{
+		this->addCoins();
+		ringDelay = 0;
+	}
+
+	if(obsDelay > randobs)
+	{
+		this->addObstacle();
+		obsDelay = 0;
+		randobs = (rand() %8)* 0.2 + 1.4;
+	}
+
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	CCObject* jt = NULL;
 	if(i >500 && y == 0)
 	{
 		y = 1;
-		CCAnimation* animation = CCAnimation::create();
-		animation->setDelayPerUnit(0.04f);
-		animation->setRestoreOriginalFrame(true);
-		animation->addSpriteFrameWithFileName("speed0.png");
-		animation->addSpriteFrameWithFileName("speed1.png");
-		animation->addSpriteFrameWithFileName("speed2.png");
-		animation->addSpriteFrameWithFileName("speed3.png");
-		animation->addSpriteFrameWithFileName("speed4.png");
-		animation->addSpriteFrameWithFileName("speed5.png");
-		animation->addSpriteFrameWithFileName("speed6.png");
-		animation->addSpriteFrameWithFileName("speed7.png");
-		animation->addSpriteFrameWithFileName("speed8.png");
-		player->stopAllActions();
-		CCAnimate* animate = CCAnimate::create(animation);
-		CCRepeatForever* repeat = CCRepeatForever::create(animate);
-		CCMoveTo* goMiddle = CCMoveTo::create(1,ccp(size.width/2, size.height/4 + 10));
-		player->runAction(goMiddle);
-		player->runAction(repeat);
-
-	
+		sonic->runAction();
 	}
-	if(player->getPositionX() > (size.width/2 -5) && y == 1)
-	{
-		y =2;
-		CCAnimation* animation = CCAnimation::create();
-		animation->setDelayPerUnit(0.04f);
-		animation->setRestoreOriginalFrame(true);
-		animation->addSpriteFrameWithFileName("speed9.png");
-		animation->addSpriteFrameWithFileName("speed10.png");
-		animation->addSpriteFrameWithFileName("speed11.png");
-		animation->addSpriteFrameWithFileName("speed12.png");
-		animation->addSpriteFrameWithFileName("speed13.png");
-		animation->addSpriteFrameWithFileName("speed14.png");
-		animation->addSpriteFrameWithFileName("speed15.png");
-		animation->addSpriteFrameWithFileName("speed16.png");
-		player->stopAllActions();
-		CCAnimate* animate = CCAnimate::create(animation);
-		CCRepeatForever* repeat = CCRepeatForever::create(animate);
-		player->runAction(repeat);
-	}
-	if(player->numberOfRunningActions() < 1)
+	if(sonic->sprite->getPositionX() > (size.width/2 -5) && y == 1)
 	{
 		inAction = 0;
-		CCAnimation* animation = CCAnimation::create();
-		animation->setDelayPerUnit(0.04f);
-		animation->setRestoreOriginalFrame(true);
-		animation->addSpriteFrameWithFileName("speed9.png");
-		animation->addSpriteFrameWithFileName("speed10.png");
-		animation->addSpriteFrameWithFileName("speed11.png");
-		animation->addSpriteFrameWithFileName("speed12.png");
-		animation->addSpriteFrameWithFileName("speed13.png");
-		animation->addSpriteFrameWithFileName("speed14.png");
-		animation->addSpriteFrameWithFileName("speed15.png");
-		animation->addSpriteFrameWithFileName("speed16.png");
-		player->stopAllActions();
-		CCAnimate* animate = CCAnimate::create(animation);
-		CCRepeatForever* repeat = CCRepeatForever::create(animate);
-		CCMoveTo* goMiddle = CCMoveTo::create(1,ccp(size.width/2, size.height/4 + 10));
-		player->runAction(goMiddle);
-		player->runAction(repeat);
-	
-	
+		sonic->fastAction();
+		y =2;
+	}
+	if(sonic->sprite->numberOfRunningActions() < 1)
+	{
+		inAction = 0;
+		sonic->fastAction();
 	}
 
-	
+	CCRect sonicRect = CCRectMake( sonic->sprite->getPosition().x - (sonic->sprite->getContentSize().width/2),
+		sonic->sprite->getPosition().y - (sonic->sprite->getContentSize().height/2),
+		sonic->sprite->getContentSize().width,
+		sonic->sprite->getContentSize().height);
+
+	CCARRAY_FOREACH(obstacles, jt)
+	{
+		CCSprite*target = dynamic_cast<CCSprite*>(jt);
+		CCRect coinRect = CCRectMake( target->getPosition().x - (target->getContentSize().width/2),
+			target->getPosition().y - (target->getContentSize().height/2),
+			target->getContentSize().width,
+			target->getContentSize().height);
+
+		if(sonicRect.intersectsRect(coinRect))
+		{
+			this->removeChild(target,true);
+			obstacles->removeObject(target);
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("New_Super_Mario_Bros_Death_Sound_Effect.mp3", false);
+			CCScene *s = GameOverScene::scene();
+			CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5,s));
+		}
+	}
+
+
+
+	CCARRAY_FOREACH(rings, jt)
+	{
+		CCSprite*target = dynamic_cast<CCSprite*>(jt);
+		CCRect coinRect = CCRectMake( target->getPosition().x - (target->getContentSize().width/2),
+			target->getPosition().y - (target->getContentSize().height/2),
+			target->getContentSize().width,
+			target->getContentSize().height);
+
+		if(sonicRect.intersectsRect(coinRect))
+		{
+			sonic->score++;
+			this->removeChild(target,true);
+			rings->removeObject(target);
+			//CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("Sonic_Ring_Sound_Effect.mp3", false);
+		}
+	}
+	this->showScore(sonic->score);
+
+
+	CCPoint backgroundScrollVert = ccp(-1000,0) ;
+	_backgroundNode->setPosition(ccpAdd(_backgroundNode->getPosition(),ccpMult(backgroundScrollVert,dt))) ; 
+
+	CCArray *spaceDusts = CCArray::createWithCapacity(2) ;
+	spaceDusts->addObject(_spacedust1) ;
+	spaceDusts->addObject(_spacedust2) ;
+	for ( int ii = 0  ; ii <spaceDusts->count() ; ii++ ) {
+		CCSprite * spaceDust = (CCSprite *)(spaceDusts->objectAtIndex(ii)) ;
+		float xPosition = _backgroundNode->convertToWorldSpace(spaceDust->getPosition()).x  ;
+		float size = spaceDust->getContentSize().width ;
+		if ( xPosition < -size ) {
+			_backgroundNode->incrementOffset(ccp(spaceDust->getContentSize().width*2,0),spaceDust) ; 
+		}                                   
+	}
+
+	CCArray *sky = CCArray::createWithCapacity(2) ;
+	sky->addObject(_spacialanomaly) ;
+	sky->addObject(_spacialanomaly2) ;
+	sky->addObject(_spacialanomaly3) ;
+	for ( int ii = 0  ; ii <sky->count() ; ii++ ) {
+		CCSprite * bg = (CCSprite *)(sky->objectAtIndex(ii)) ;
+		float xPosition = _backgroundNode->convertToWorldSpace(bg->getPosition()).x  ;
+		float size = bg->getContentSize().width ;
+		if ( xPosition < -size ) {
+			_backgroundNode->incrementOffset(ccp(bg->getContentSize().width*3,0),bg) ; 
+		}                                   
+	}
+
+
+
+	CCArray *backGrounds = CCArray::createWithCapacity(2) ;
+	backGrounds->addObject(_galaxy) ;
+	backGrounds->addObject(_galaxy2) ;
+	backGrounds->addObject(_planetsunrise) ;
+	for ( int ii = 0 ; ii <backGrounds->count() ; ii++ ) {
+		CCSprite * background = (CCSprite *)(backGrounds->objectAtIndex(ii)) ;
+		float xPosition = _backgroundNode->convertToWorldSpace(background->getPosition()).x ;
+		float size = background->getContentSize().width ;
+		if ( xPosition < -size ) {
+			_backgroundNode->incrementOffset(ccp(_spacialanomaly->getContentSize().width*3,0),background) ; 
+		}
+	}
+
+
+
+
+
+
 }
 
+void Game::addCoins()
+{
+	Coin *ring = new Coin();
+	rings->addObject(ring->sprite);
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	int minY = ring->sprite->getContentSize().height/2 + winSize.height/4;
+	int maxY = (winSize.height)*3/4 - ring->sprite->getContentSize().height/2;
+	int rangeY = maxY - minY;
+
+	int actualY = ( rand() % rangeY ) + minY;
 
 
+	ring->sprite->setPosition( 
+		ccp(winSize.width + (ring->sprite->getContentSize().width/2), 
+		actualY) );
+	this->addChild(ring->sprite);
+
+
+	int minDuration = (int)2.0;
+	int maxDuration = (int)4.0;
+	int rangeDuration = maxDuration - minDuration;
+
+	int actualDuration = ( rand() % rangeDuration )
+		+ minDuration;
+
+
+	CCFiniteTimeAction* actionMove = 
+		CCMoveTo::create( (float)actualDuration, 
+		ccp(0 - ring->sprite->getContentSize().width/2, actualY) );
+	CCFiniteTimeAction* actionMoveDone = 
+		CCCallFuncN::create( this, 
+		callfuncN_selector(Game::spriteMoveFinished));
+	ring->rotateAction();
+	ring->sprite->runAction( CCSequence::create(actionMove, actionMoveDone, NULL) );
+}
+
+void Game::spriteMoveFinished(CCNode* sender)
+{
+	CCSprite *ring = (CCSprite*)sender;
+	this->removeChild(ring, true);
+}
+
+void Game::showScore(int score)
+{
+	const int labelLength = 100;
+	char scoreLabelText[labelLength];
+	sprintf(scoreLabelText,"Score: %d", score);
+	label->setString(scoreLabelText);
+
+}
+
+void Game::addObstacle()
+{
+
+	Obstacle* obs = new Obstacle(rand()%2 +1);
+	obstacles->addObject(obs->sprite);
+	obs->sprite->setPosition( 
+		ccp(visibleSize.width + (obs->sprite->getContentSize().width/2), 
+		visibleSize.height/6) );
+	this->addChild(obs->sprite,0);
+	CCFiniteTimeAction* actionMove = 
+		CCMoveTo::create( (float)2.0, 
+		ccp(0 - obs->sprite->getContentSize().width/2, visibleSize.height/6) );
+	CCFiniteTimeAction* actionMoveDone = 
+		CCCallFuncN::create( this, 
+		callfuncN_selector(Game::spriteMoveFinished));
+	obs->sprite->runAction( CCSequence::create(actionMove, actionMoveDone, NULL) );
+
+
+}
 void Game::menuCloseCallback(CCObject* pSender)
 {
-	/*
-    CCDirector::sharedDirector()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif*/
 
 	CCScene *s = Menu::scene();
-			CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5,s));
+	CCDirector::sharedDirector()->replaceScene(CCTransitionFade::create(0.5,s));
 
 }
 Game::Game(void)
@@ -280,60 +323,28 @@ Game::~Game(void)
 void Game::ccTouchesBegan(CCSet* touches, CCEvent* event)
 {
 	CCTouch* touch = (CCTouch*)( touches->anyObject() );
-    CCPoint location = touch->getLocationInView();
+	CCPoint location = touch->getLocationInView();
 	pos.x = location.x;
 	pos.y = location.y;
-	
+
 }
 
 void Game::ccTouchesEnded(CCSet* touches, CCEvent* event)
 {
 	if(inAction == 0)
 	{
-			
-	CCTouch* touch = (CCTouch*)( touches->anyObject() );
-    CCPoint location = touch->getLocationInView();
-	CCSize size = CCDirector::sharedDirector()->getWinSize();
-	CCAnimation* animation = CCAnimation::create();
-	
-		
-	if(fabs(pos.x - location.x) < 20 && fabs(pos.y - location.y) < 20)
-	{	
-		inAction = 1;
-		CCJumpTo*	jumpPlayer = CCJumpTo::create(1,ccp(size.width/2, size.height/4 + 10),100,1);
-		animation->setDelayPerUnit(0.11f);
-		animation->setRestoreOriginalFrame(true);
-		animation->addSpriteFrameWithFileName("jump1.png");
-		animation->addSpriteFrameWithFileName("jump2.png");
-		animation->addSpriteFrameWithFileName("jump3.png");
-		animation->addSpriteFrameWithFileName("jump4.png");
-		animation->addSpriteFrameWithFileName("jump5.png");
-		animation->addSpriteFrameWithFileName("jump6.png");
-		animation->addSpriteFrameWithFileName("jump7.png");
-		animation->addSpriteFrameWithFileName("jump8.png");
-		animation->addSpriteFrameWithFileName("jump9.png");
-		CCAnimate* animate = CCAnimate::create(animation);
-		player->stopAllActions();
-		player->runAction(animate);
-		player->runAction(jumpPlayer);
-	}
+
+		CCTouch* touch = (CCTouch*)( touches->anyObject() );
+		CCPoint location = touch->getLocationInView();
+		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		CCAnimation* animation = CCAnimation::create();
 
 
-
-		else if((pos.y - location.y < 0) && (fabs(pos.x - location.x) < fabs(pos.y - location.y)))
-	{
-		inAction = 1;
-		animation->setDelayPerUnit(0.1f);
-		animation->setRestoreOriginalFrame(true);
-		animation->addSpriteFrameWithFileName("slash1.png");
-		animation->addSpriteFrameWithFileName("slash2.png");
-		animation->addSpriteFrameWithFileName("slash3.png");
-		animation->addSpriteFrameWithFileName("slash4.png");
-		CCAnimate* animate = CCAnimate::create(animation);
-		CCRepeatForever* repeat = CCRepeatForever::create(animate);
-		player->stopAllActions();
-		player->runAction(animate);
-	}
+		if(fabs(pos.x - location.x) < 20 && fabs(pos.y - location.y) < 20)
+		{	
+			inAction = 1;
+			sonic->jumpAction();
+		}
 	}
 
 }

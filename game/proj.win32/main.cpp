@@ -4,9 +4,6 @@
 
 USING_NS_CC;
 
-// uncomment below line, open debug console
-// #define USE_WIN32_CONSOLE
-
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
                        LPTSTR    lpCmdLine,
@@ -26,7 +23,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setFrameSize(480, 320);
-	eglView->setFrameZoomFactor(1);
+	eglView->setFrameZoomFactor(3);
     int ret = CCApplication::sharedApplication()->run();
 
 #ifdef USE_WIN32_CONSOLE

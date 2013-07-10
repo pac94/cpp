@@ -3,30 +3,50 @@
 #include "cocos2d.h"
 #include "Player.h"
 #include "Box2D/Box2D.h"
+#include "coin.h"
 #include "CParallaxNodeExtras.h"
+#include "obstacle.h"
 
 class Game : public CCLayer
 {
 public:
 	Game(void);
 	~Game(void);
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
-	CCSprite* player;
 	Player* sonic;
+	Coin* ring;
+	float time;
+	float obsDelay;
+	float ringDelay;
+	int truc;
+	float randobs;
 	int i,y,inAction;
 	float Mytest;
+	CCArray *rings;
+	CCArray* obstacles; 
 	CCArray * _blocks;
 	CCPoint pos;
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
+	CCSize visibleSize;
+	CCLabelTTF* label;
     static cocos2d::CCScene* scene();
     void test(float dt);
-    // a selector callback
+	void addCoins();
+	void addObstacle();
+	void spriteMoveFinished(CCNode* sender);
     void menuCloseCallback(CCObject* pSender);
     void update(float dt);
+	void showScore(int score);
 	void ccTouchesEnded(CCSet* touches, CCEvent* event);
 	void ccTouchesBegan(CCSet* touches, CCEvent* event);
-    // implement the "static node()" method manually
+		CCParallaxNodeExtras *_backgroundNode; 
+CCSprite *_spacedust1;
+CCSprite *_spacedust2;
+CCSprite *_planetsunrise;
+CCSprite *_galaxy;
+CCSprite *_galaxy2;
+CCSprite *_spacialanomaly;
+CCSprite *_spacialanomaly2;
+CCSprite *_spacialanomaly3;
     CREATE_FUNC(Game);
 };
 #endif

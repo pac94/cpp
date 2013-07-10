@@ -9,23 +9,22 @@ CCScene* HelloWorld::scene()
 	HelloWorld *layer = NULL;
     do 
     {
-        // 'scene' is an autorelease object
+        
         scene = CCScene::create();
         CC_BREAK_IF(! scene);
 
-        // 'layer' is an autorelease object
+        
 		layer = HelloWorld::create();
         CC_BREAK_IF(! layer);
 
-        // add layer as a child to scene
+        
         scene->addChild(layer);
     } while (0);
 	layer->setTouchEnabled(true);
-    // return the scene
+    
     return scene;
 }
 
-// on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
     bool bRet = false;
@@ -33,19 +32,10 @@ bool HelloWorld::init()
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     do 
     {
-        //////////////////////////////////////////////////////////////////////////
-        // super init first
-        //////////////////////////////////////////////////////////////////////////
+
 
         CC_BREAK_IF(! CCLayer::init());
 
-        //////////////////////////////////////////////////////////////////////////
-        // add your codes below...
-        //////////////////////////////////////////////////////////////////////////
-
-        // 1. Add a menu item with "X" image, which is clicked to quit the program.
-
-        // Create a "close" menu item with close icon, it's an auto release object.
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
         CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
             "CloseNormal.png",
@@ -54,7 +44,6 @@ bool HelloWorld::init()
             menu_selector(HelloWorld::menuCloseCallback));
         CC_BREAK_IF(! pCloseItem);
 
-        // Place the menu item bottom-right conner.
         pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
 
 
@@ -64,60 +53,27 @@ bool HelloWorld::init()
             this,
             menu_selector(HelloWorld::next));
         CC_BREAK_IF(! pStartItem);
-		CCBlink* startBlink = CCBlink::create(100,100);
-		CCRepeatForever* repeatBlink = CCRepeatForever::create(startBlink);
-		pStartItem->runAction(repeatBlink);
 
-        // Place the menu item bottom-right conner.
         pStartItem->setPosition(ccp(size.width / 2, size.height / 3));
 
-
-        // Create a menu with the "close" menu item, it's an auto release object.
         CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
         pMenu->setPosition(CCPointZero);
 		pMenu->addChild(pStartItem);
         CC_BREAK_IF(! pMenu);
 
-        // Add the menu to HelloWorld layer as a child layer.
         this->addChild(pMenu, 1);
 
-        // 2. Add a label shows "Hello World".
-
-        // Create a label and initialize with string "Hello World".
         CCSprite* pLabel = CCSprite::create("title.png");
         CC_BREAK_IF(! pLabel);
 
-        // Get window size and place the label upper. 
        pLabel->setPosition(ccp(0, size.height - 100));
 	   CCMoveTo* titleMove = CCMoveTo::create(1,ccp(size.width / 2, size.height - 100));
-        // Add the label to HelloWorld layer as a child layer.
         this->addChild(pLabel, 1);
 		pLabel->runAction(titleMove);
-        // 3. Add add a splash screen, show the cocos2d splash image.
-        /*CCSprite* pSprite = CCSprite::create("HelloWorld.png");
-        CC_BREAK_IF(! pSprite);
-
-        // Place the sprite on the center of the screen
-        pSprite->setPosition(ccp(size.width/2, size.height/2));
-
-        // Add the sprite to HelloWorld layer as a child layer.
-        this->addChild(pSprite, 0);*/
-		/*
-		CCSprite* play = CCSprite::create("start.png");
-		CC_BREAK_IF(! play);
-		play->setPosition(ccp(size.width / 2, size.height / 3));
-		this->addChild(play, 1);
-		CCBlink* startBlink = CCBlink::create(100,100);
-		CCRepeatForever* repeatBlink = CCRepeatForever::create(startBlink);
-		play->runAction(repeatBlink);
-		   
-		*/
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("ProgHouse_13.mp3", true);
-		// 1) Create the CCParallaxNode
 		_backgroundNode = CCParallaxNodeExtras::node(); //1 
 		this->addChild(_backgroundNode,-1) ;
  
-// 2) Create the sprites we'll add to the CCParallaxNode
+
 _spacedust1 = CCSprite::create("clouds.png");
 _spacedust2 = CCSprite::create("clouds.png");
 _planetsunrise = CCSprite::create("land_green.png");
@@ -127,11 +83,11 @@ _spacialanomaly = CCSprite::create("sky_evening.png");
 _spacialanomaly2 = CCSprite::create("sky_evening.png"); 
  _spacialanomaly3 = CCSprite::create("sky_evening.png"); 
 
-// 3) Determine relative movement speeds for space dust and background
+
 CCPoint dustSpeed = ccp(0.005, 0.005);
 CCPoint bgSpeed = ccp(0.2, 0.2);
  
-// 4) Add children to CCParallaxNode
+
 _backgroundNode->addChild(_spacedust1, 0 , dustSpeed , ccp(0,winSize.height * 0.70) ); // 2
 _backgroundNode->addChild(_spacedust2, 0 , dustSpeed , ccp( _spacedust1->getContentSize().width,winSize.height * 0.70)); 
 _backgroundNode->addChild(_galaxy,-1, bgSpeed , ccp(0,winSize.height * 0.2));
